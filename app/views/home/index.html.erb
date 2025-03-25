@@ -1,8 +1,22 @@
 <h1> Homepage </h1>
 
 <% if current_user %>
-<%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+
+  <%= link_to "New Post", new_post_path %> <br>
+  <%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %> <br>
+  <h2> Posts </h2>
+  <% @posts.each do |post|%>
+    <p>Author: <%= post.user.name%></p>
+    <%= post.body%><br>
+  <%end%>
+
 <%else%>
-<%= link_to "Sign Up", new_user_registration_path %> <br>
-<%= link_to "Sign In", new_user_session_path %> <br>
+  <%= link_to "Sign Up", new_user_registration_path %> <br>
+  <%= link_to "Sign In", new_user_session_path %> <br>
+
+  <% @posts.each do |post|%>
+    <p>Author: [HIDDEN]</p>
+    <%= post.body%><br>
+  <%end%>
 <%end%>
+

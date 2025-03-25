@@ -1,0 +1,12 @@
+<h1>Write a new post</h1>
+
+<%= form_with model: @post do |form| %>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </div>
+  
+  <%= form.submit %><br><br>
+<% end %>
+
+<%= link_to "Home", root_path %> <br>
